@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
 import './App.css';
-import { NYT_API } from './utils/api.js';
+import { Context } from './utils/api';
 
 function App() {
-  const [topic, setTopic] = useState('');
-  const [articles, setArticles] = useState('');
-  console.log(articles);
-
-  useEffect(() => {
-    if (topic) {
-      NYT_API(topic).then(res => {
-        setArticles(res);
-      });
-    }
-  }, [topic]);
+  const { NYT_API } = useContext(Context);
+  console.log(NYT_API);
 
   return (
     <div className="App">
-      <Header topic={topic} setTopic={setTopic} />
-      <Main articles={articles} />
+      <Header />
+      <Main />
     </div>
   );
 }
