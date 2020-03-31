@@ -1,31 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const ArticlesWrapper = styled.article`
-  background-image: url(${props => props.image});
-  background-size: cover;
-  background-position: center;
-  height: 400px;
-  width: 25%;
-  display: flex;
-  align-items: flex-end;
-  background-color: rgba(0, 0, 0, 0.6);
-  margin-bottom: 0;
-  float: left;
-  background-color: red;
-`;
-
-const Caption = styled.p`
-  font-size: 15px;
-`;
-
 export default function Article({ article }) {
+  const ArticleWrapper = styled.article`
+    height: 500px;
+    width: 25%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 0;
+    float: left;
+    background-color: red;
+    position: relative;
+    transition: ;
+  `;
+
+  const Image = styled.img`
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    transition: transform 0.4s;
+  `;
+
+  const Caption = styled.p`
+    font-size: 15px;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    &:hover {
+      opacity: 1;
+    }
+  `;
+
+  const [hovered, setHovered] = useState(false);
+  console.log(hovered);
+
   console.log('rendered', article);
   return (
-    <ArticlesWrapper image={article.image.url}>
-      <a style={{ overflow: 'hidden' }} href={article.url} target="_blank">
-        <Caption>{article.caption}</Caption>
-      </a>
-    </ArticlesWrapper>
+    <ArticleWrapper
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <Image src={article.image.url} />
+
+      <Caption as="a" href={article.url}>
+        {article.caption}
+      </Caption>
+    </ArticleWrapper>
   );
 }
