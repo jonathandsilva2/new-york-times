@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const Context = React.createContext();
 
@@ -16,7 +16,6 @@ function ContextProvider({ children }) {
       .then(res => {
         console.log(topic, res);
         for (let i = 0; i < res.data.results.length; i++) {
-          console.log(i);
           if (res.data.results[i].multimedia) {
             articles1.push(res.data.results[i]);
           }

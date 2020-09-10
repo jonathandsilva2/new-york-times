@@ -9,6 +9,8 @@ const HeaderWrapper = styled.header`
 `;
 
 export default function Header() {
+  const img = new Image();
+  console.log(img);
   return (
     <HeaderWrapper>
       <Logo />

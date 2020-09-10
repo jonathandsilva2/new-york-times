@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
+import Footer from './components/Footer';
 import './App.css';
 import { Context } from './utils/api';
 
 function App() {
-  const { NYT_API } = useContext(Context);
-  console.log(NYT_API);
-
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: 'black', height: '1000px' }}>
       <Header />
       <Main />
+      <Footer />
     </div>
   );
 }

@@ -1,9 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
-
-import { ReactComponent as Logo } from '../assets/images/nyt-logo.svg';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { Context } from '../utils/api';
-import styled from 'styled-components';
-
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -15,17 +11,19 @@ export default function SelectBar() {
   const { NYT_API } = useContext(Context);
 
   useEffect(() => {
-    NYT_API('business');
+    if (topic) {
+      NYT_API(topic);
+    }
   }, [topic]);
 
-  const handleChange = event => {
+  const handleTopicChange = (event) => {
     setTopic(event.target.value);
   };
 
   return (
-    <FormControl style={{ backgroundColor: 'red' }}>
-      <InputLabel>Topic</InputLabel>
-      <Select value={topic} onChange={handleChange}>
+    <FormControl style={{ backgroundColor: 'white' }}>
+      <InputLabel color="red">Topic</InputLabel>
+      <Select value={topic} onChange={handleTopicChange}>
         <MenuItem value="arts">Arts</MenuItem>
         <MenuItem value="automobiles">Automobiles</MenuItem>
         <MenuItem value="books">Books</MenuItem>
