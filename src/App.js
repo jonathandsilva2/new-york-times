@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import styled from 'styled-components';
+
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
-import Footer from './components/Footer';
-import './App.css';
-import { Context } from './utils/api';
+import Loading from './components/Loading';
+import { articlesContext } from './utils/api';
+
+const AppWrapper = styled.div``;
 
 function App() {
+  const [topic, setTopic] = useState('books');
+  const [loading, setLoading] = useState(false);
+
+  const { NYT_API } = useContext(articlesContext);
+  useEffect(() => {
+    async function getArticles() {
+      if (topic) {
+        setLoading(true);
+        await NYT_API(topic);
+        setLoading(false);
+      }
+    }
+    getArticles();
+  }, [topic]);
+
   return (
-    <div className="App" style={{ backgroundColor: 'black', height: '1000px' }}>
-      <Header />
-      <Main />
+    <AppWrapper>
+      <Header topic={topic} setTopic={setTopic} />
+      <Main loading={loading} />
       <Footer />
-    </div>
+    </AppWrapper>
   );
 }
 

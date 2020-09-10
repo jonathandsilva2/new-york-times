@@ -8,13 +8,13 @@ const HeaderWrapper = styled.header`
   background-color: black;
 `;
 
-export default function Header() {
+export default function Header({ topic, setTopic }) {
   const img = new Image();
   console.log(img);
   return (
     <HeaderWrapper>
       <Logo />
-      <SelectBar />
+      <SelectBar topic={topic} setTopic={setTopic} />
     </HeaderWrapper>
   );
 }

@@ -1,28 +1,17 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
-import { Context } from '../utils/api';
+import React from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-export default function SelectBar() {
-  const [topic, setTopic] = useState('');
-
-  const { NYT_API } = useContext(Context);
-
-  useEffect(() => {
-    if (topic) {
-      NYT_API(topic);
-    }
-  }, [topic]);
-
+export default function SelectBar({ topic, setTopic }) {
   const handleTopicChange = (event) => {
     setTopic(event.target.value);
   };
 
   return (
     <FormControl style={{ backgroundColor: 'white' }}>
-      <InputLabel color="red">Topic</InputLabel>
+      <InputLabel>Topic</InputLabel>
       <Select value={topic} onChange={handleTopicChange}>
         <MenuItem value="arts">Arts</MenuItem>
         <MenuItem value="automobiles">Automobiles</MenuItem>

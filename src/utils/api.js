@@ -1,19 +1,19 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const Context = React.createContext();
+const articlesContext = React.createContext();
 
 function ContextProvider({ children }) {
   const [articles, setArticles] = useState([]);
 
-  const NYT_API = async topic => {
+  const NYT_API = async (topic) => {
     const key = 'uKKnzk0uk0UArBEk8qp1PDWNW3kZfPFt';
     let articles1 = [];
     await axios
       .get(
         `https://api.nytimes.com/svc/topstories/v2/${topic}.json?api-key=${key}`,
       )
-      .then(res => {
+      .then((res) => {
         console.log(topic, res);
         for (let i = 0; i < res.data.results.length; i++) {
           if (res.data.results[i].multimedia) {
@@ -38,15 +38,15 @@ function ContextProvider({ children }) {
       });
   };
   return (
-    <Context.Provider
+    <articlesContext.Provider
       value={{
         articles,
         NYT_API,
       }}
     >
       {children}
-    </Context.Provider>
+    </articlesContext.Provider>
   );
 }
 
-export { ContextProvider, Context };
+export { ContextProvider, articlesContext };

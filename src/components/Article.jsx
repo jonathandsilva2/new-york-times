@@ -51,6 +51,11 @@ const Image = styled.img`
   object-fit: cover;
   transition: transform 0.4s;
   object-position: 50% 50%;
+  transition: transform 300ms ease-in-out;
+
+  &:hover {
+    transform: translate(200px, 150px) rotate(20deg);
+  }
 `;
 
 export default function Article({ article }) {
@@ -58,7 +63,7 @@ export default function Article({ article }) {
 
   return (
     <ArticleWrapper>
-      <Image ref={imageRef} src={article.image.url} />
+      <Image loading="lazy" ref={imageRef} src={article.image.url} />
       <Caption as="a" href={article.url}>
         {article.caption}
       </Caption>
