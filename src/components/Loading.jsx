@@ -5,7 +5,7 @@ export default function Loading() {
   console.log('loading render');
   return (
     <div>
-      <img src={logo} alt="loading..." />
+      <img src={logo} alt="loading..." height="200px" />
     </div>
   );
 }

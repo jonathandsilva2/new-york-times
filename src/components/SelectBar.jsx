@@ -3,6 +3,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import styled from 'styled-components';
 
 export default function SelectBar({ topic, setTopic }) {
   const handleTopicChange = (event) => {
@@ -10,36 +11,33 @@ export default function SelectBar({ topic, setTopic }) {
   };
 
   return (
-    <FormControl style={{ backgroundColor: 'white' }}>
-      <InputLabel>Topic</InputLabel>
-      <Select value={topic} onChange={handleTopicChange}>
-        <MenuItem value="arts">Arts</MenuItem>
-        <MenuItem value="automobiles">Automobiles</MenuItem>
-        <MenuItem value="books">Books</MenuItem>
-        <MenuItem value="business">Business</MenuItem>
-        <MenuItem value="fashion">Fashion</MenuItem>
-        <MenuItem value="food">Food</MenuItem>
-        <MenuItem value="health">Health</MenuItem>
-        <MenuItem value="home">Home</MenuItem>
-        <MenuItem value="insider">Insider</MenuItem>
-        <MenuItem value="magazine">Magazine</MenuItem>
-        <MenuItem value="movies">Movies</MenuItem>
-        <MenuItem value="national">National</MenuItem>
-        <MenuItem value="nyregion">NY Region</MenuItem>
-        <MenuItem value="obituaries">Obituaries</MenuItem>
-        <MenuItem value="opinion">Opinion</MenuItem>
-        <MenuItem value="politics">Politics</MenuItem>
-        <MenuItem value="realestate">Real Estate</MenuItem>
-        <MenuItem value="science">Science</MenuItem>
-        <MenuItem value="sports">Sports</MenuItem>
-        <MenuItem value="sundayreview">Sunday Review</MenuItem>
-        <MenuItem value="technology">Technology</MenuItem>
-        <MenuItem value="theater">Theater</MenuItem>
-        <MenuItem value="tmagazine">T Magazine</MenuItem>
-        <MenuItem value="travel">Travel</MenuItem>
-        <MenuItem value="upshot">Upshot</MenuItem>
-        <MenuItem value="world">World</MenuItem>
-      </Select>
-    </FormControl>
+    <select value={topic} onChange={handleTopicChange} style={{ minHeight: 0 }}>
+      <option value="arts">Arts</option>
+      <option value="automobiles">Automobiles</option>
+      <option value="books">Books</option>
+      <option value="business">Business</option>
+      <option value="fashion">Fashion</option>
+      <option value="food">Food</option>
+      <option value="health">Health</option>
+      <option value="home">Home</option>
+      <option value="insider">Insider</option>
+      <option value="magazine">Magazine</option>
+      <option value="movies">Movies</option>
+      <option value="national">National</option>
+      <option value="nyregion">NY Region</option>
+      <option value="obituaries">Obituaries</option>
+      <option value="opinion">Opinion</option>
+      <option value="politics">Politics</option>
+      <option value="realestate">Real Estate</option>
+      <option value="science">Science</option>
+      <option value="sports">Sports</option>
+      <option value="sundayreview">Sunday Review</option>
+      <option value="technology">Technology</option>
+      <option value="theater">Theater</option>
+      <option value="tmagazine">T Magazine</option>
+      <option value="travel">Travel</option>
+      <option value="upshot">Upshot</option>
+      <option value="world">World</option>
+    </select>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import LazyLoad from 'react-lazy-load';
 
@@ -54,25 +54,12 @@ const Image = styled.img`
 `;
 
 export default function Article({ article }) {
-  const imageRef = useRef(null);
-
-  console.log(window.innerWidth);
-
   return (
-    <ArticleWrapper ref={imageRef} class="lol">
+    <ArticleWrapper as="a" href={article.url}>
       <LazyLoad>
-        <Image
-          onScroll={() => {
-            const { offsetTop } = imageRef.current;
-            console.log(offsetTop);
-          }}
-          loading="lazy"
-          src={article.image.url}
-        />
+        <Image src={article.image.url} />
       </LazyLoad>
-      <Caption as="a" href={article.url}>
-        {article.caption}
-      </Caption>
+      <Caption>{article.caption}</Caption>
     </ArticleWrapper>
   );
 }
