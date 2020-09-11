@@ -5,9 +5,8 @@ import styled from 'styled-components';
 
 const MainWrapper = styled.main``;
 
-export default function Main({ loading }) {
-  const { articles } = useContext(articlesContext);
-
+export default function Main({ loading, articles }) {
+  if (articles === null) return null;
   return (
     <MainWrapper>
       {articles.map((article, index) => {

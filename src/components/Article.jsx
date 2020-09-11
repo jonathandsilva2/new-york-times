@@ -54,6 +54,7 @@ const Image = styled.img`
 `;
 
 export default function Article({ article }) {
+  console.log('articles rerendered');
   return (
     <ArticleWrapper as="a" href={article.url}>
       <LazyLoad>
