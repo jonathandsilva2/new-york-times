@@ -10,7 +10,7 @@ import { articlesContext } from './utils/api';
 const AppWrapper = styled.div``;
 
 function App() {
-  const [topic, setTopic] = useState('books');
+  const [topic, setTopic] = useState('');
   const [loading, setLoading] = useState(false);
 
   const { NYT_API } = useContext(articlesContext);

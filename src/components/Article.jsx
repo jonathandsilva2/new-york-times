@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import LazyLoad from 'react-lazy-load';
 
 const Caption = styled.figcaption`
   font-size: 15px;
@@ -8,7 +9,7 @@ const Caption = styled.figcaption`
   bottom: -30%;
   z-index: -0;
   opacity: 0;
-  -webkit-transition: all 0.6s ease;
+  -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.6s ease;
   -o-transition: all 0.6s ease;
   text-decoration: none;
@@ -26,7 +27,6 @@ const ArticleWrapper = styled.figure`
   margin-bottom: 0;
   margin: 0;
   float: left;
-  background-color: red;
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -51,19 +51,25 @@ const Image = styled.img`
   object-fit: cover;
   transition: transform 0.4s;
   object-position: 50% 50%;
-  transition: transform 300ms ease-in-out;
-
-  &:hover {
-    transform: translate(200px, 150px) rotate(20deg);
-  }
 `;
 
 export default function Article({ article }) {
-  const imageRef = useRef();
+  const imageRef = useRef(null);
+
+  console.log(window.innerWidth);
 
   return (
-    <ArticleWrapper>
-      <Image loading="lazy" ref={imageRef} src={article.image.url} />
+    <ArticleWrapper ref={imageRef} class="lol">
+      <LazyLoad>
+        <Image
+          onScroll={() => {
+            const { offsetTop } = imageRef.current;
+            console.log(offsetTop);
+          }}
+          loading="lazy"
+          src={article.image.url}
+        />
+      </LazyLoad>
       <Caption as="a" href={article.url}>
         {article.caption}
       </Caption>
