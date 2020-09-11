@@ -27,6 +27,8 @@ const LogoWrapper = styled.div`
 
 const SelectBarWrapper = styled.div`
   align-self: center;
+  position: relative;
+  width: 200px;
   @media (min-width: 650px) {
     margin-right: 150px;
   }
