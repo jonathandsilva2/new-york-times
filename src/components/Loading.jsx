@@ -1,4 +1,5 @@
 import React from 'react';
+
 import logo from '../assets/images/ajax-loader.gif';
 
 export default function Loading() {

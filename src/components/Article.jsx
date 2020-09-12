@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import LazyLoad from 'react-lazy-load';
 
 const Caption = styled.figcaption`
   font-size: 15px;
@@ -19,6 +18,7 @@ const Caption = styled.figcaption`
     bottom: 0%;
     opacity: 1;
   }
+  padding: 10px;
 `;
 
 const ArticleWrapper = styled.figure`
@@ -54,12 +54,9 @@ const Image = styled.img`
 `;
 
 export default function Article({ article }) {
-  console.log('articles rerendered');
   return (
     <ArticleWrapper as="a" href={article.url}>
-      <LazyLoad>
-        <Image src={article.image.url} />
-      </LazyLoad>
+      <Image src={article.image.url} />
       <Caption>{article.caption}</Caption>
     </ArticleWrapper>
   );

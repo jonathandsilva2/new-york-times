@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 
 const articlesContext = React.createContext();
 
@@ -29,7 +29,6 @@ function ContextProvider({ children }) {
       });
       return acc;
     }, []);
-    console.log(newArticles);
     return newArticles;
   };
   return (

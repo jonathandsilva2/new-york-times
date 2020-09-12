@@ -1,17 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
+
 import Article from './Article';
-import { articlesContext } from '../utils/api';
-import styled from 'styled-components';
 
-const MainWrapper = styled.main``;
-
-export default function Main({ loading, articles }) {
+export default function Main({ articles }) {
   if (articles === null) return null;
+
   return (
-    <MainWrapper>
+    <main>
       {articles.map((article, index) => {
         return <Article key={index} article={article} />;
       })}
-    </MainWrapper>
+    </main>
   );
 }

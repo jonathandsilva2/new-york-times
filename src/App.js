@@ -1,30 +1,17 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
-import { articlesContext } from './utils/api';
 
-const AppWrapper = styled.div``;
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 function App() {
   const [articles, setArticles] = useState(null);
-
-  const { NYT_API } = useContext(articlesContext);
-
-  // useEffect(() => {
-  //   async function getArticles() {
-  //     {
-  //       const newArticles = await NYT_API(topic);
-  //       console.log(newArticles);
-  //       setArticles(newArticles);
-  //     }
-  //   }
-  //   if (topic) {
-  //     getArticles();
-  //   }
-  // }, [topic, articles]);
 
   return (
     <AppWrapper>
