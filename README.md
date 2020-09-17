@@ -1,4 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# New York Times
+
+A responsive website that fetches data from the New York Times API. You may view the live site [here](https://jonathan-new-york-times.netlify.app)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+
+## Built using
+
+* [React](https://reactjs.org/)
+
+* [Styled Components](https://styled-components.com/)
+
+* [Jest](https://jestjs.io/)
+
+
 
 ## Available Scripts
 
